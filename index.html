@@ -69,6 +69,9 @@
     </div>
 
     <script>
+        // Base URL for the uploaded MP3 files
+        const MP3_BASE_URL = "https://luisonyturbe.github.io/prepschools/";
+
         // --- School Data (Corrected, Consolidated, and Updated with PDF Content) ---
         const schools = [
             {
@@ -76,6 +79,7 @@
                 sealColor: "bg-red-800",
                 mainWebsite: "https://www.kent-school.edu/",
                 galleryLink: "https://www.kent-school.edu/gallery",
+                audioFile: "Kent.mp3",
                 uniqueFact: "Kent is guided by its trilingual motto of **Simplicity of Life, Directness of Purpose, and Self-Reliance**. These values are enforced through the **Job Program**, where every student has a role in maintaining the community (e.g., waiting tables, cleaning common areas), reinforcing the value of character and responsibility.",
                 overview: "An independent, coed boarding school known for its rigorous curriculum and dedication to addressing each student as a **whole individual**. The school educates students intellectually, socially, ethically, and spiritually, preparing them to contribute to the **common good**. It focuses on developing five key **Kent Competencies** in every student: **Active Empathy, Servant Leadership, Critical & Creative Thinking, Effective Communication, and Engaged Citizenship**.",
                 keyFacts: [
@@ -97,6 +101,7 @@
                 sealColor: "bg-green-700",
                 mainWebsite: "https://www.choate.edu/",
                 galleryLink: "https://www.choate.edu/multimedia/photo-gallery",
+                audioFile: "Choate.mp3",
                 uniqueFact: "Choate encourages students to **'Be Undefinable'** and is centered on **8 Signature Programs** for advanced, focused study—such as robotics, science, politics, and Middle Eastern studies—supported by facilities like the **i.d.Lab®**.",
                 overview: "A large boarding and day school on a **458-acre campus** in Wallingford, CT, known for instilling lifelong habits of learning, leadership, and service. With **300+ courses** and a faculty where **88% reside on campus**, the learning environment is continuous and extends beyond the typical 3 p.m. school day.",
                 keyFacts: [
@@ -118,6 +123,7 @@
                 sealColor: "bg-blue-900",
                 mainWebsite: "https://www.hotchkiss.org/",
                 galleryLink: "https://www.hotchkiss.org/our-campus/virtual-tour",
+                audioFile: "Hotchkiss School.mp3",
                 uniqueFact: "Hotchkiss provides an **experience-based education** with a low **4:1 student-to-faculty ratio**. A signature feature is the opportunity for students to learn about the **Fairfield Farm**, integrating experiential learning into the curriculum, and graduating students as global citizens and community leaders.",
                 overview: "A prominent independent college preparatory school in Lakeville, CT, offering a rigorous curriculum with **over 270 academic courses**. It operates a highly residential community where **94% of students reside in 13 residence halls**, focusing on pluralism and creating a student-centered environment.",
                 keyFacts: [
@@ -139,11 +145,12 @@
                 sealColor: "bg-orange-600",
                 mainWebsite: "https://www.westminster-school.org/",
                 galleryLink: "https://www.westminster-school.org/our-community/gallery",
+                audioFile: "Westminster.mp3",
                 uniqueFact: "Westminster is guided by the aspiration **'Grit of Character. Grace of Mind.'** This balance is reflected in its intensive **Hartford Partnerships** (including **Horizons at Westminster** and **Loaves and Fishes**), which fulfill the mission of **service beyond self**.",
                 overview: "A private, coeducational boarding and day school in Simsbury, CT, committed to nurturing a diverse community. The school is highly residential (**75% boarding**) and encourages students through **'gritty trial and error'** to grow into curious, critical, and independent learners. The mission calls students to commit to a **life of service beyond self**.",
                 keyFacts: [
                     { label: "Total Enrollment", value: "425 Students (Grades 9-12/PG)", icon: "users" },
-                    { label: "Student-to-Teacher Ratio", value: "5:1", icon: "graduation-cap" },
+                    { label: "Student-to-Faculty Ratio", value: "5:1", icon: "graduation-cap" },
                     { label: "Boarding Percentage", value: "75% Boarding", icon: "home" },
                     { label: "International Students", value: "15%", icon: "globe" },
                     { label: "Unique Program", value: "PG (Postgraduate) Program and Visiting Writers Program", icon: "award" },
@@ -160,6 +167,7 @@
                 sealColor: "bg-gray-800",
                 mainWebsite: "https://www.berkshireschool.org/",
                 galleryLink: "https://www.berkshireschool.org/admission/gallery",
+                audioFile: "Berkshire.mp3",
                 uniqueFact: "Guided by the motto **'Pro Vita Non Pro Schola Discimus'** ('Learning, not just for school but for life'), Berkshire offers unique **Signature Programs** including **Aviation Science** (on-campus flight simulator/training), **Astronomy & the Dixon Observatory**, and specialized **Advanced Research Programs**.",
                 overview: "A co-ed boarding and day school on a **400-acre campus** at the base of **Mount Everett** in Massachusetts. The school focuses on core values like **Curiosity, Integrity, Respect, and Resilience**. The curriculum features **124 courses offered** and robust academic support through its Advisory Program and Form Deans.",
                 keyFacts: [
@@ -181,6 +189,7 @@
                 sealColor: "bg-sky-600",
                 mainWebsite: "https://www.stgeorges.edu/",
                 galleryLink: "https://www.stgeorges.edu/about/gallery",
+                audioFile: "St George.mp3",
                 uniqueFact: "St. George's signature is its **Ocean Setting** and **'School at Sea'** program, centered around the school's research vessel, **Geronimo**. This unique feature allows students to integrate hands-on marine science and oceanographic study directly into their education to lead lives of **constructive service to the world**.",
                 overview: "An independent, coeducational boarding and day school in Middletown, RI, with a **125-acre campus** overlooking the Atlantic Ocean and Second Beach. The school focuses on fostering a nurturing community through **'Connected Learning'** (Classrooms that Empower) and aims to equip all students with the opportunity to discover and develop their particular gifts.",
                 keyFacts: [
@@ -202,6 +211,7 @@
                 sealColor: "bg-indigo-700",
                 mainWebsite: "https://www.taboracademy.org/",
                 galleryLink: "https://www.taboracademy.org/media/photos-videos",
+                audioFile: "Tabor.mp3",
                 uniqueFact: "Famously known as the **'School by the Sea,'** Tabor's curriculum is defined by its maritime connection. Students study sea survival in the **Lifeboatman course** (Nautical Science electives) and utilize the **Schooner Tabor Boy** and the **Marine and Nautical Science (MANS) Center** for hands-on, experiential learning.",
                 overview: "An independent boarding and day school in Marion, MA, celebrating its **Sesquicentennial (150th Anniversary)**. Tabor encourages students to **'Make Waves in the World'** by emphasizing that its waterfront location is a living classroom. The focus is on real-world application, building confidence and important life-long skills.",
                 keyFacts: [
@@ -223,6 +233,7 @@
                 sealColor: "bg-amber-600",
                 mainWebsite: "https://www.millbrook.org/",
                 galleryLink: "https://www.millbrook.org/page/multimedia",
+                audioFile: "Millbrook.mp3",
                 uniqueFact: "Millbrook is home to the **Trevor-Lovejoy Zoo**, the only **AZA-accredited zoo** on a high school campus in the world. Students are directly responsible for the daily care of over **170 exotic and indigenous animals** (including the Red Wolf), integrating conservation, service, and veterinary science.",
                 overview: "An intentionally **small** coeducational boarding school in Millbrook, NY, on an **800-acre campus**. Defined by its philosophy **'Non Sibi Sed Cunctis'** ('Not for oneself but for all'). The school emphasizes a strong tradition of **service, environmental stewardship** (Leader in Sustainability), and challenging academics including **Independent Science Research** and the **Culminating Experience for Seniors (CES)**.",
                 keyFacts: [
@@ -276,6 +287,8 @@
 
         // Function to show the detail page for a selected school
         function showDetail(school) {
+            const audioUrl = MP3_BASE_URL + school.audioFile;
+
             mainView.classList.add('hidden');
             detailView.classList.remove('hidden');
             headerText.innerHTML = `Interview Preparation for: <span class="text-indigo-700">${school.name}</span>`;
@@ -298,8 +311,7 @@
                     <div class="flex items-center space-x-2 p-2 bg-yellow-100 rounded-lg">
                         <i data-lucide="megaphone" class="w-5 h-5 text-yellow-700"></i>
                         <audio controls class="h-8">
-                            <!-- User must replace the 'src' attribute with their NotebookLM MP3 URL -->
-                            <source src="placeholder_for_notebooklm_audio.mp3" type="audio/mp3">
+                            <source src="${audioUrl}" type="audio/mp3">
                             Your browser does not support the audio element.
                         </audio>
                         <span class="text-sm text-yellow-800">Review Your Audio Notes</span>

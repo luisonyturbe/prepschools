@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prep School Interview Prep: The 8 Schools</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Lucide Icons for visual appeal -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* Custom font and base styles */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7fafc;
+            min-height: 100vh;
+        }
+        .school-card {
+            transition: all 0.3s ease;
+        }
+        .school-card:hover {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transform: translateY(-2px);
+        }
+        .school-button {
+            padding: 1rem 1.5rem;
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: white;
+            border-radius: 0.75rem;
+            text-align: center;
+            transition: background-color 0.2s, transform 0.1s;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
+        }
+        .school-button:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+        .content-container {
+            min-height: 70vh;
+        }
+        .fact-item {
+            display: flex;
+            align-items: flex-start;
+        }
+        .fact-icon {
+            flex-shrink: 0;
+            margin-right: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container mx-auto p-4 sm:p-8">
+        <header class="text-center mb-10 p-6 bg-white rounded-xl shadow-lg">
+            <h1 class="text-4xl font-extrabold text-indigo-700">Prepschool Interview Prep Guide</h1>
+            <p class="mt-2 text-xl text-gray-600">Choose a school below to review its details, unique facts, and key interview preparations.</p>
+        </header>
+
+        <!-- Main View: School Buttons -->
+        <div id="main-view" class="content-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Buttons will be generated here -->
+        </div>
+
+        <!-- Detail View: School Information -->
+        <div id="detail-view" class="content-container hidden">
+            <!-- School details will be rendered here -->
+        </div>
+    </div>
+
+    <script>
+        // --- School Data (Corrected, Consolidated, and Updated with PDF Content) ---
+        const schools = [
+            {
+                name: "Kent School",
+                sealColor: "bg-red-800",
+                mainWebsite: "https://www.kent-school.edu/",
+                galleryLink: "https://www.kent-school.edu/gallery",
+                uniqueFact: "Kent is guided by its trilingual motto of **Simplicity of Life, Directness of Purpose, and Self-Reliance**. These values are enforced through the **Job Program**, where every student has a role in maintaining the community (e.g., waiting tables, cleaning common areas), reinforcing the value of character and responsibility.",
+                overview: "An independent, coed boarding school known for its rigorous curriculum and dedication to addressing each student as a **whole individual**. The school educates students intellectually, socially, ethically, and spiritually, preparing them to contribute to the **common good**. It focuses on developing five key **Kent Competencies** in every student: **Active Empathy, Servant Leadership, Critical & Creative Thinking, Effective Communication, and Engaged Citizenship**.",
+                keyFacts: [
+                    { label: "Total Enrollment", value: "520 Students (Grades 9-12/PG)", icon: "users" },
+                    { label: "Student-to-Faculty Ratio", value: "5:1", icon: "graduation-cap" },
+                    { label: "Boarding Status", value: "93% Boarding, 7% Day", icon: "home" },
+                    { label: "Total Courses Offered", value: "151 (including Advanced Studies)", icon: "book-open" },
+                    { label: "Faculty with Advanced Degrees", value: "73%", icon: "school" },
+                    { label: "Athletics", value: "50 teams across 23 sports, including Equestrian and Sports Medicine", icon: "soccer-ball" }
+                ],
+                funFacts: [
+                    { fact: "Notable Alumni: **Seth MacFarlane** (Creator of *Family Guy*) and actress **Lana Del Rey** (Elizabeth Grant) both attended Kent.", icon: "megaphone" },
+                    { fact: "Kent was one of the first schools to implement a **'sliding-scale tuition'** model, emphasizing that an elite education should not be solely for the elite.", icon: "wallet" },
+                    { fact: "The school is famous for its nationally recognized **Rowing Program**, utilizing its location directly on the Housatonic River.", icon: "anchor" }
+                ]
+            },
+            {
+                name: "Choate Rosemary Hall",
+                sealColor: "bg-green-700",
+                mainWebsite: "https://www.choate.edu/",
+                galleryLink: "https://www.choate.edu/multimedia/photo-gallery",
+                uniqueFact: "Choate encourages students to **'Be Undefinable'** and is centered on **8 Signature Programs** for advanced, focused study—such as robotics, science, politics, and Middle Eastern studies—supported by facilities like the **i.d.Lab®**.",
+                overview: "A large boarding and day school on a **458-acre campus** in Wallingford, CT, known for instilling lifelong habits of learning, leadership, and service. With **300+ courses** and a faculty where **88% reside on campus**, the learning environment is continuous and extends beyond the typical 3 p.m. school day.",
+                keyFacts: [
+                    { label: "Total Enrollment", value: "859 Students (Grades 9-12/PG)", icon: "users" },
+                    { label: "Average Class Size", value: "11 Students", icon: "maximize" },
+                    { label: "Total Courses", value: "300+", icon: "book-open" },
+                    { label: "Languages Offered", value: "6 (Arabic, Chinese, French, Greek, Latin, Spanish)", icon: "globe" },
+                    { label: "Technology", value: "1:1 iPad program provided to all students", icon: "tablet" },
+                    { label: "Athletics", value: "80+ interscholastic teams (Home of the Wild Boars)", icon: "soccer-ball" }
+                ],
+                funFacts: [
+                    { fact: "Notable Alumni: **President John F. Kennedy** (Class of '35), actress **Glenn Close** (Class of '65), and actor **Paul Giamatti** (Class of '85) all attended Choate.", icon: "user-check" },
+                    { fact: "The school has a traditional and intense rivalry with **Deerfield Academy**, often encapsulated in the cheer: 'Go Choate! Beat Deerfield!'.", icon: "swords" },
+                    { fact: "The **Paul Mellon Arts Center (PMAC)** hosts over 80 performances and shows annually, with Colony Hall having 1070 seats.", icon: "palette" }
+                ]
+            },
+            {
+                name: "Hotchkiss School",
+                sealColor: "bg-blue-900",
+                mainWebsite: "https://www.hotchkiss.org/",
+                galleryLink: "https://www.hotchkiss.org/our-campus/virtual-tour",
+                uniqueFact: "Hotchkiss provides an **experience-based education** with a low **4:1 student-to-faculty ratio**. A signature feature is the opportunity for students to learn about the **Fairfield Farm**, integrating experiential learning into the curriculum, and graduating students as global citizens and community leaders.",
+                overview: "A prominent independent college preparatory school in Lakeville, CT, offering a rigorous curriculum with **over 270 academic courses**. It operates a highly residential community where **94% of students reside in 13 residence halls**, focusing on pluralism and creating a student-centered environment.",
+                keyFacts: [
+                    { label: "Total Enrollment", value: "627 Students (Grades 9-12/PG)", icon: "users" },
+                    { label: "Student-to-Faculty Ratio", value: "4:1", icon: "graduation-cap" },
+                    { label: "Boarding Percentage", value: "94% Boarding", icon: "home" },
+                    { label: "Course Load", value: "Over 270+ academic courses offered", icon: "book-open" },
+                    { label: "Arts Facilities", value: "Elfers Hall (music) and Tremaine Gallery (art)", icon: "sparkles" },
+                    { label: "Athletics Success", value: "Mountain Biking team recently won League Championship 4x", icon: "bike" }
+                ],
+                funFacts: [
+                    { fact: "Notable Alumni: Actress **Allison Janney** (Class of '77), journalist **Chris Wallace** (Class of '63), and the co-founder of *TIME* Magazine, **Henry Luce** (Class of '16).", icon: "user-check" },
+                    { fact: "The school is located on the edge of **Lake Wononscopomuc**, and it hosts a major annual rivalry event known as **Taft Day**.", icon: "swords" },
+                    { fact: "The school's motto, *Moniti Meliora Sequamur*, translates to **'Guided by each other, let us seek better paths,'** reflecting its commitment to community and moral development.", icon: "handshake" }
+                ]
+            },
+            {
+                name: "Westminster School",
+                sealColor: "bg-orange-600",
+                mainWebsite: "https://www.westminster-school.org/",
+                galleryLink: "https://www.westminster-school.org/our-community/gallery",
+                uniqueFact: "Westminster is guided by the aspiration **'Grit of Character. Grace of Mind.'** This balance is reflected in its intensive **Hartford Partnerships** (including **Horizons at Westminster** and **Loaves and Fishes**), which fulfill the mission of **service beyond self**.",
+                overview: "A private, coeducational boarding and day school in Simsbury, CT, committed to nurturing a diverse community. The school is highly residential (**75% boarding**) and encourages students through **'gritty trial and error'** to grow into curious, critical, and independent learners. The mission calls students to commit to a **life of service beyond self**.",
+                keyFacts: [
+                    { label: "Total Enrollment", value: "425 Students (Grades 9-12/PG)", icon: "users" },
+                    { label: "Student-to-Teacher Ratio", value: "5:1", icon: "graduation-cap" },
+                    { label: "Boarding Percentage", value: "75% Boarding", icon: "home" },
+                    { label: "International Students", value: "15%", icon: "globe" },
+                    { label: "Unique Program", value: "PG (Postgraduate) Program and Visiting Writers Program", icon: "award" },
+                    { label: "Arts Focus", value: "Dramat Archive tracks past Theater productions (e.g., *Little Shop of Horrors*)", icon: "theater" }
+                ],
+                funFacts: [
+                    { fact: "The campus, known affectionately as **'The Hill,'** provides a highly relational learning environment, fostering strong bonds between peers and faculty.", icon: "mountain" },
+                    { fact: "Athletic success is measured not just by wins, but by the bonds created between teammates and coaches, preparing students to be **'citizens of the global world.'**", icon: "world" },
+                    { fact: "Student life centers around key facilities like the **Armstrong Dining Hall** and the **Brockelman Student Center & Grill**.", icon: "coffee" }
+                ]
+            },
+            {
+                name: "Berkshire School",
+                sealColor: "bg-gray-800",
+                mainWebsite: "https://www.berkshireschool.org/",
+                galleryLink: "https://www.berkshireschool.org/admission/gallery",
+                uniqueFact: "Guided by the motto **'Pro Vita Non Pro Schola Discimus'** ('Learning, not just for school but for life'), Berkshire offers unique **Signature Programs** including **Aviation Science** (on-campus flight simulator/training), **Astronomy & the Dixon Observatory**, and specialized **Advanced Research Programs**.",
+                overview: "A co-ed boarding and day school on a **400-acre campus** at the base of **Mount Everett** in Massachusetts. The school focuses on core values like **Curiosity, Integrity, Respect, and Resilience**. The curriculum features **124 courses offered** and robust academic support through its Advisory Program and Form Deans.",
+                keyFacts: [
+                    { label: "Total Enrollment", value: "425 Students (Grades 9-12/PG)", icon: "users" },
+                    { label: "Student-to-Faculty Ratio", value: "4:1", icon: "graduation-cap" },
+                    { label: "Average Class Size", value: "12 Students", icon: "maximize" },
+                    { label: "AP Courses Offered", value: "17 AP Courses", icon: "zap" },
+                    { label: "Outdoor Program", value: "Ritt Kellogg Mountain Program for leadership and confidence", icon: "mountain-sun" },
+                    { label: "Student Event", value: "Sabin Entrepreneurial Prize competition for sustainability business plans", icon: "briefcase" }
+                ],
+                funFacts: [
+                    { fact: "Notable Alumni: **William Standish Knowles** (Nobel Prize winner in Chemistry) and **Lincoln Kierstein** (Co-founder of the New York City Ballet).", icon: "trophy" },
+                    { fact: "A traditional campus event is the **Head of School, Mr. Mulder, welcoming students to class** from the steps of Berkshire Hall.", icon: "building" },
+                    { fact: "The school is situated at the foot of **Mount Everett**, giving students immediate access to the Ritt Kellogg Mountain Program.", icon: "map-pin" }
+                ]
+            },
+            {
+                name: "St. George's School",
+                sealColor: "bg-sky-600",
+                mainWebsite: "https://www.stgeorges.edu/",
+                galleryLink: "https://www.stgeorges.edu/about/gallery",
+                uniqueFact: "St. George's signature is its **Ocean Setting** and **'School at Sea'** program, centered around the school's research vessel, **Geronimo**. This unique feature allows students to integrate hands-on marine science and oceanographic study directly into their education to lead lives of **constructive service to the world**.",
+                overview: "An independent, coeducational boarding and day school in Middletown, RI, with a **125-acre campus** overlooking the Atlantic Ocean and Second Beach. The school focuses on fostering a nurturing community through **'Connected Learning'** (Classrooms that Empower) and aims to equip all students with the opportunity to discover and develop their particular gifts.",
+                keyFacts: [
+                    { label: "Total Enrollment", value: "385 Students (Grades 9-12)", icon: "users" },
+                    { label: "Campus Size", value: "125 Acres overlooking the Ocean", icon: "map" },
+                    { label: "Research Vessel", value: "School owns and operates the research vessel Geronimo", icon: "ship" },
+                    { label: "Location", value: "Middletown, RI, near Newport", icon: "compass" },
+                    { label: "Community Goal", value: "To equip students to lead lives of constructive service to the world", icon: "handshake" },
+                    { label: "Nondiscrimination", value: "Comprehensive Nondiscrimination Policy in place for admission", icon: "heart" }
+                ],
+                funFacts: [
+                    { fact: "Notable Alumni: Actress and producer **Julie Bowen** and political commentator **Tucker Carlson** both attended St. George's.", icon: "user-check" },
+                    { fact: "The school's most iconic building is the **Memorial Schoolhouse**, known for its distinctive English Gothic architecture.", icon: "castle" },
+                    { fact: "The unique **Ocean Setting** is leveraged to provide real-world, hands-on learning, making the campus truly a 'Place Like No Other.'", icon: "waves" }
+                ]
+            },
+            {
+                name: "Tabor Academy",
+                sealColor: "bg-indigo-700",
+                mainWebsite: "https://www.taboracademy.org/",
+                galleryLink: "https://www.taboracademy.org/media/photos-videos",
+                uniqueFact: "Famously known as the **'School by the Sea,'** Tabor's curriculum is defined by its maritime connection. Students study sea survival in the **Lifeboatman course** (Nautical Science electives) and utilize the **Schooner Tabor Boy** and the **Marine and Nautical Science (MANS) Center** for hands-on, experiential learning.",
+                overview: "An independent boarding and day school in Marion, MA, celebrating its **Sesquicentennial (150th Anniversary)**. Tabor encourages students to **'Make Waves in the World'** by emphasizing that its waterfront location is a living classroom. The focus is on real-world application, building confidence and important life-long skills.",
+                keyFacts: [
+                    { label: "Total Enrollment", value: "Approx. 510 Students (Grades 9-12/PG)", icon: "users" },
+                    { label: "Student-to-Faculty Ratio", value: "5:1 (as per general prep school data)", icon: "graduation-cap" },
+                    { label: "Unique Program", value: "Marine and Nautical Science (MANS) Center with Schaefer Wet Lab", icon: "ship-wheel" },
+                    { label: "Motto", value: "All-A-Taut-O (A ship fully rigged and in order)", icon: "anchor" },
+                    { label: "Sailing", value: "Highly successful two-season sport, competing for the Baker Trophy", icon: "sailboat" },
+                    { label: "Science Focus", value: "Curriculum enhanced by Marine Science courses like *Biology of the Oceans*", icon: "flask-conical" }
+                ],
+                funFacts: [
+                    { fact: "Tabor Academy was officially designated a **Naval Honor School** by the U.S. Navy during World War II, a status it still maintains, recognizing its excellent maritime training.", icon: "medal" },
+                    { fact: "The school has a large, iconic **Schooner (Tabor Boy)** that serves as a floating classroom and is central to the school's identity.", icon: "ship" },
+                    { fact: "The **Schaefer Wet Lab** is located directly in the salt marsh of Sippican Harbor, allowing students to study ocean biology right outside the door.", icon: "waves" }
+                ]
+            },
+            {
+                name: "Millbrook School",
+                sealColor: "bg-amber-600",
+                mainWebsite: "https://www.millbrook.org/",
+                galleryLink: "https://www.millbrook.org/page/multimedia",
+                uniqueFact: "Millbrook is home to the **Trevor-Lovejoy Zoo**, the only **AZA-accredited zoo** on a high school campus in the world. Students are directly responsible for the daily care of over **170 exotic and indigenous animals** (including the Red Wolf), integrating conservation, service, and veterinary science.",
+                overview: "An intentionally **small** coeducational boarding school in Millbrook, NY, on an **800-acre campus**. Defined by its philosophy **'Non Sibi Sed Cunctis'** ('Not for oneself but for all'). The school emphasizes a strong tradition of **service, environmental stewardship** (Leader in Sustainability), and challenging academics including **Independent Science Research** and the **Culminating Experience for Seniors (CES)**.",
+                keyFacts: [
+                    { label: "Total Enrollment", value: "Approx. 310 Students (Grades 9-12)", icon: "users" },
+                    { label: "Student-to-Faculty Ratio", value: "4.1:1", icon: "graduation-cap" },
+                    { label: "Campus Size", value: "800 Acres", icon: "map" },
+                    { label: "Unique Feature", value: "Trevor-Lovejoy Zoo (AZA Accredited)", icon: "paw-print" },
+                    { label: "Service Focus", value: "Service Learning and Summer Service Internships", icon: "handshake" },
+                    { label: "Arts Center", value: "Holbrook Arts Center and Warner Gallery", icon: "palette" }
+                ],
+                funFacts: [
+                    { fact: "Notable Alumni: **William F. Buckley, Jr.** (Author and political commentator) and **Rufus Wainwright** (Musician and songwriter) are among the alumni.", icon: "mic" },
+                    { fact: "The Trevor Zoo directly inspired alumnus **Dr. Tom Lovejoy**, the renowned conservation biologist, highlighting the school's impact on lifelong careers.", icon: "leaf" },
+                    { fact: "The school recognizes athletes through the **'Mustangs of the Week'** award, reinforcing its philosophy of 'Character in Competition.'", icon: "trophy" }
+                ]
+            }
+        ];
+        // --- Core Functions ---
+        const mainView = document.getElementById('main-view');
+        const detailView = document.getElementById('detail-view');
+        const headerText = document.querySelector('header p');
+
+        // Function to dynamically generate key facts list items
+        function generateKeyFactsHtml(facts) {
+            return facts.map(fact => `
+                <li class="fact-item text-gray-800">
+                    <i data-lucide="${fact.icon}" class="w-5 h-5 fact-icon text-teal-600"></i>
+                    <span><strong class="font-semibold">${fact.label}:</strong> ${fact.value}</span>
+                </li>
+            `).join('');
+        }
+
+        // Function to dynamically generate fun facts list items
+        function generateFunFactsHtml(facts) {
+            return facts.map(fact => `
+                <li class="fact-item text-gray-800">
+                    <i data-lucide="${fact.icon}" class="w-5 h-5 fact-icon text-red-500"></i>
+                    <span>${fact.fact}</span>
+                </li>
+            `).join('');
+        }
+
+        // Function to show the main list of buttons
+        function showMainView() {
+            mainView.classList.remove('hidden');
+            detailView.classList.add('hidden');
+            headerText.innerHTML = "Choose a school below to review its details, unique facts, and key interview preparations.";
+            // Re-initialize Lucide icons for the button view
+            lucide.createIcons();
+        }
+
+        // Function to show the detail page for a selected school
+        function showDetail(school) {
+            mainView.classList.add('hidden');
+            detailView.classList.remove('hidden');
+            headerText.innerHTML = `Interview Preparation for: <span class="text-indigo-700">${school.name}</span>`;
+            
+            detailView.innerHTML = `
+                <button onclick="showMainView()" class="inline-flex items-center px-4 py-2 mb-6 text-sm font-medium text-white bg-gray-500 rounded-lg hover:bg-gray-600 focus:ring-4 focus:outline-none focus:ring-gray-300">
+                    <i data-lucide="arrow-left" class="w-4 h-4 mr-2"></i>
+                    Back to Schools List
+                </button>
+
+                <!-- Header Links and MP3 Placeholder -->
+                <div class="flex flex-col sm:flex-row justify-between items-center mb-6 p-4 bg-white rounded-xl shadow-lg border-b border-gray-200">
+                    <!-- School Website Link -->
+                    <a href="${school.mainWebsite}" target="_blank" class="text-base font-semibold text-blue-600 hover:text-blue-800 hover:underline inline-flex items-center mb-2 sm:mb-0">
+                        <i data-lucide="external-link" class="w-4 h-4 mr-2"></i>
+                        Visit ${school.name} Main Website
+                    </a>
+                    
+                    <!-- MP3 Placeholder for NotebookLM Notes -->
+                    <div class="flex items-center space-x-2 p-2 bg-yellow-100 rounded-lg">
+                        <i data-lucide="megaphone" class="w-5 h-5 text-yellow-700"></i>
+                        <audio controls class="h-8">
+                            <!-- User must replace the 'src' attribute with their NotebookLM MP3 URL -->
+                            <source src="placeholder_for_notebooklm_audio.mp3" type="audio/mp3">
+                            Your browser does not support the audio element.
+                        </audio>
+                        <span class="text-sm text-yellow-800">Review Your Audio Notes</span>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-xl overflow-hidden p-6 sm:p-8">
+                    <div class="flex items-center mb-6 space-x-4">
+                        <div class="w-16 h-16 rounded-full flex items-center justify-center text-3xl font-bold text-white ${school.sealColor} shadow-md">${school.name.charAt(0)}</div>
+                        <h2 class="text-3xl font-extrabold text-gray-900">${school.name}</h2>
+                    </div>
+
+                    <!-- Campus Gallery Link -->
+                    <div class="mb-6 p-4 border border-blue-200 rounded-lg bg-blue-50 text-center">
+                        <a href="${school.galleryLink}" target="_blank" class="text-lg font-bold text-blue-700 hover:text-blue-900 hover:underline inline-flex items-center">
+                            <i data-lucide="image" class="w-5 h-5 mr-2"></i>
+                            Explore the Campus Photo Gallery
+                            <i data-lucide="external-link" class="w-4 h-4 ml-2"></i>
+                        </a>
+                        <p class="text-sm text-gray-600 mt-1">Click the link above to view campus photos and videos (opens in a new tab).</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+                        <!-- Key Facts -->
+                        <div class="p-4 border border-teal-300 rounded-lg bg-teal-50">
+                            <h3 class="flex items-center text-xl font-bold text-teal-700 mb-3">
+                                <i data-lucide="info" class="w-6 h-6 mr-2 fill-teal-700"></i>Key Facts
+                            </h3>
+                            <ul class="space-y-3">
+                                ${generateKeyFactsHtml(school.keyFacts)}
+                            </ul>
+                        </div>
+                        
+                        <!-- Unique Data -->
+                        <div class="p-4 border border-amber-300 rounded-lg bg-amber-50">
+                            <h3 class="flex items-center text-xl font-bold text-amber-700 mb-2">
+                                <i data-lucide="star" class="w-6 h-6 mr-2 fill-amber-700"></i>Unique Core Feature
+                            </h3>
+                            <p class="text-gray-800 font-medium leading-relaxed">${school.uniqueFact}</p>
+                        </div>
+
+                        <!-- Overview -->
+                        <div class="lg:col-span-1 p-4 border border-indigo-200 rounded-lg bg-indigo-50">
+                            <h3 class="flex items-center text-xl font-bold text-indigo-700 mb-2">
+                                <i data-lucide="building-2" class="w-6 h-6 mr-2"></i>General Overview
+                            </h3>
+                            <p class="text-gray-700 leading-relaxed">${school.overview}</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Fun Facts & Alumni -->
+                    <div class="mt-8 p-6 bg-red-50 rounded-lg border-t-4 border-red-500">
+                        <h3 class="flex items-center text-2xl font-bold text-red-700 mb-4">
+                            <i data-lucide="sparkles" class="w-6 h-6 mr-2 fill-red-700"></i>Fun Facts & Notable Alumni
+                        </h3>
+                        <ul class="space-y-3 text-lg text-gray-800">
+                            ${generateFunFactsHtml(school.funFacts)}
+                        </ul>
+                    </div>
+                </div>
+            `;
+            // Re-initialize Lucide icons for the new content
+            lucide.createIcons();
+        }
+
+        // Generate the initial button list
+        schools.forEach(school => {
+            const button = document.createElement('button');
+            button.className = `school-button ${school.sealColor} hover:opacity-90`;
+            button.textContent = school.name;
+            button.onclick = () => showDetail(school);
+            mainView.appendChild(button);
+        });
+
+        // Initialize icons on load (for the header)
+        lucide.createIcons();
+
+        // Start on the main view
+        showMainView();
+    </script>
+</body>
+</html>
